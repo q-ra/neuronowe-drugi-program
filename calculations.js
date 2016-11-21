@@ -41,7 +41,7 @@ let getRandomWeights = function(sizeOfArray){
 
 exports.createWeights = (thresholds) => {
   let weights = []
-  let tmpWeights = Array(10).fill(1).map((x) => getRandomWeights(1600))
+  let tmpWeights = Array(1600).fill(1).map((x) => getRandomWeights(1600))
   for(let indx of tmpWeights.keys()){
     weights.push([-1 * thresholds[indx], ...tmpWeights[indx]])
   }

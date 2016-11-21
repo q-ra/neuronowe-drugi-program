@@ -55,25 +55,25 @@ exports.getNumber = () => {
     let weights = global.superWeights[indx]
     let threshold = weights[0] * -1
     if (calculations.activatingFunction(E, weights, threshold) == 1){
-      foundNumbers.push(indx)
+      $(`#otd-${indx}`).addClass('keyed')
     }
   }
-
-  $('.digit-buttons > button').removeClass('selected-digit')
-
-  for(let numb of foundNumbers){
-    $(`.digit-${numb}`).addClass('selected-digit')
-  }
-
-  if (!foundNumbers.length)
-    swal('Nie udało dopasować sie żadnej liczby')
-  else if(foundNumbers.length == 1)
-    swal('Cyfra to ' + foundNumbers[0])
-  else
-    swal('Możliwe cyfry to' + foundNumbers.join(' lub '))
-
-
 }
+  // $('.digit-buttons > button').removeClass('selected-digit')
+
+  // for(let numb of foundNumbers){
+  //   $(`.digit-${numb}`).addClass('selected-digit')
+  // }
+
+  // if (!foundNumbers.length)
+  //   swal('Nie udało dopasować sie żadnej liczby')
+  // else if(foundNumbers.length == 1)
+  //   swal('Cyfra to ' + foundNumbers[0])
+  // else
+  //   swal('Możliwe cyfry to' + foundNumbers.join(' lub '))
+
+
+
 
 
 //Nauka
@@ -84,22 +84,23 @@ exports.learn = () => {
   let longestLifes = Array(1600).fill(0)
   global.superWeights = []
   for(let indx of Array(1600).keys()){
+    console.log(indx)
     global.superWeights.push(singlePerceptronLearn(indx, weights, thresholds, longestLifes, pocketWeights))
   }
   swal('Nauczyłem się !')
 }
 
-let singlePerceptronLearn = (imgIndx, perceptronIndx, weights, thresholds, longestLifes, pocketWeights ) => {
-  let examples = utils.getJSONWithExamples()[perceptronIndx] //tablica z wszystkimi przykladami danego perceptronu
+let singlePerceptronLearn = (perceptronIndx, weights, thresholds, longestLifes, pocketWeights ) => {
+  let examples = utils.getJSONWithExamples() //tablica z wszystkimi przykladami danego perceptronu
   let currentWeights = weights[perceptronIndx]
   let currentThreshold = thresholds[perceptronIndx]
   let longestLife = longestLifes[perceptronIndx]
   let currentPocketWeights = pocketWeights[perceptronIndx]
   let currentLifeLength = 0
-  for(let draw of Array(1000)){
+  for(let draw of Array(100)){
     let currentExample = examples[Math.floor(Math.random() * examples.length)]
-    let E = [1, ...currentExample['E']] // x0 == 1
-    let T = currentExample['T'] == true ? 1 : -1
+    let E = [1, ...currentExample] // x0 == 1
+    let T = E[perceptronIndx + 1]
     let err = calculations.anyErrors(E, currentWeights, currentThreshold, T)
     if (err){
       currentLifeLength = 0
