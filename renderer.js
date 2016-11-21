@@ -55,6 +55,20 @@ $(() => {
       // }
     }
   })
+
+  $('.move-to-left-screen').on('click', function(e){
+    console.log('wwaaa')
+    for(let indx of Array(1600).keys()){
+      if($(`#otd-${indx}`).hasClass('keyed')){
+        $(`#td-${indx}`).removeClass('normal-td').addClass('keyed')
+      } else {
+        $(`#td-${indx}`).removeClass('keyed').addClass('normal-td')
+    }
+     $(`#otd-${indx}`).removeClass('keyed')
+    }
+
+  })
+
   $('.digit-buttons > button').on('click', function(e) {
     if ($(this).hasClass('selected-digit'))
       $(this).removeClass('selected-digit')
