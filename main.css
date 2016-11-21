@@ -1,0 +1,50 @@
+td {
+  width: 10px;
+  height: 10px;
+}
+.normal-td, .output-normal-td {
+  background-color: green;
+}
+
+.keyed {
+  background-color: red;
+}
+
+.digit-buttons {
+  padding-top: 50px;
+}
+
+.digit-buttons button {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+
+body, .example-browser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.tables-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls-menu button {
+  margin: 5px;
+  padding: 5px;
+}
+
+.selected-digit {
+  background-color: green;
+}

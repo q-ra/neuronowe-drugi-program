@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Program na sieci neuronowe</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="./node_modules/sweetalert/dist/sweetalert.css" />
+  </head>
+  <body>
+    <h1 class='current-mode'> Odszumianie Obrazka </h1>
+    <div class='tables-div'>
+      <div class='table-div'> </div>
+      <div class='output-table-div'> </div>
+    </div>
+    <div class='digit-buttons'> </div>
+    <div class='controls-menu'>
+      <button class='add-current-example'>Zapisz</button>
+      <button class='learn'>Ucz się</button>
+      <button class='recognize'>Rozpoznaj</button>
+    </div>
+    <div class='example-browser'>
+      <h4>Przeglądanie przykładów</h4s>
+      <div>
+        <button class='show-next-example'>Kolejny</button>
+        <button class='delete-example'>Usuń</button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    window.$ = window.jQuery = require('jquery')
+    require('./renderer.js')
+    require('sweetalert')
+  </script>
+</html>
